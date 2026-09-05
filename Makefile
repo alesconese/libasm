@@ -87,7 +87,6 @@ test: $(LIB_PATH)
 	@echo "$(BLUE)✓ Executable ./$(TEST_EXEC) created.$(NC)"
 	@echo "-----------------------------------"
 	@./$(TEST_EXEC)
-	@echo "-----------------------------------"
 
 # Phony targets prevent conflicts with files named 'all', 'clean', etc.
 .PHONY: all clean fclean re test

@@ -5,29 +5,113 @@
 
 int main(void)
 {
-	// // Test of test
-    // int a = 15;
-    // int b = 27;
-    // int result = ft_add(a, b);
+	/********** Test of ft_strlen **********/
+	printf("*** TESTING FUNCTION: ft_strlen ***\n");
+	{
+		const char *test_str = "Hello, World!";
+		printf("\n  TEST 1\n  <Input: \"%s\"\n", test_str);
 
-    // printf("Testing ft_add(%d, %d):\n", a, b);
-    // printf("  Result: %d\n", result);
+		size_t result1 = strlen(test_str);
+		printf("  >Output with strlen: %zu\n", result1);
 
-    // if (result == (a + b))
-    //     printf("  Status: \033[0;32mOK\033[0m\n");
-    // else
-    //     printf("  Status: \033[0;31mKO\033[0m\n");
+		size_t result2 = ft_strlen(test_str);
+		printf("  >Output with ft_strlen: %zu\n", result2);
 
-	// Test of ft_strlen
-	const char *test_str = "Hello, World!";
-	size_t result = ft_strlen(test_str);
-	printf("%zu\n", result);
-	// printf("Testing ft_strlen(\"%s\"):\n", test_str);
-	// printf("  Result: %zu\n", result);
-	// if (result == strlen(test_str))
-	// 	printf("  Status: \033[0;32mOK\033[0m\n");
-	// else
-	// 	printf("  Status: \033[0;31mKO\033[0m\n");
+		if (result1 == result2)
+			printf("  RESULT: ✅ PASS\n");
+		else
+			printf("  RESULT: ❌ FAIL\n");
+	}
+
+	/********** Test of ft_strcpy **********/
+	printf("\n*** TESTING FUNCTION: ft_strcpy ***\n");
+	{
+		const char *src = "Copy this string!";
+		printf("\n  TEST 1\n  <Source: \"%s\"\n", src);
+		
+		char dest1[50]; // Ensure the destination buffer is large enough
+		
+		strcpy(dest1, src);
+		printf("  >Destination with strcpy: \"%s\"\n", dest1);
+		
+		char dest2[50]; // Ensure the destination buffer is large enough
+
+		ft_strcpy(dest2, src);
+		printf("  >Destination with ft_strcpy: \"%s\"\n", dest2);
+
+		if (strcmp(dest1, dest2) == 0)
+			printf("  RESULT: ✅ PASS\n");
+		else
+			printf("  RESULT: ❌ FAIL\n");
+	}
+	{
+		const char *src = "";
+		printf("\n  TEST 2\n  <Source: \"%s\"\n", src);
+
+		char dest1[50]; // Ensure the destination buffer is large enough
+		strcpy(dest1, src);
+		printf("  >Destination with strcpy: \"%s\"\n", dest1);
+
+		char dest2[50]; // Ensure the destination buffer is large enough
+		ft_strcpy(dest2, src);
+		printf("  >Destination with ft_strcpy: \"%s\"\n", dest2);
+
+		if (strcmp(dest1, dest2) == 0)
+			printf("  RESULT: ✅ PASS\n");
+		else
+			printf("  RESULT: ❌ FAIL\n");
+	}
+	
+	/********** Test of ft_strcmp **********/
+	printf("\n*** TESTING FUNCTION: ft_strcmp ***\n");
+	{
+		const char *s1 = "Hello";
+		const char *s2 = "Hello";
+		printf("\n  TEST 1\n  <String 1: \"%s\"\n  <String 2: \"%s\"\n", s1, s2);
+
+		int result1 = strcmp(s1, s2);
+		printf("  >Output with strcmp: %d\n", result1);
+
+		int result2 = ft_strcmp(s1, s2);
+		printf("  >Output with ft_strcmp: %d\n", result2);
+
+		if (result1 == result2)
+			printf("  RESULT: ✅ PASS\n");
+		else
+			printf("  RESULT: ❌ FAIL\n");
+	}
+	{
+		const char *s1 = "Hello1";
+		const char *s2 = "Hello";
+		printf("\n  TEST 2\n  <String 1: \"%s\"\n  <String 2: \"%s\"\n", s1, s2);
+
+		int result1 = strcmp(s1, s2);
+		printf("  >Output with strcmp: %d\n", result1);
+
+		int result2 = ft_strcmp(s1, s2);
+		printf("  >Output with ft_strcmp: %d\n", result2);
+
+		if (result1 == result2)
+			printf("  RESULT: ✅ PASS\n");
+		else
+			printf("  RESULT: ❌ FAIL\n");
+	}
+	{
+		const char *s1 = "Hello1";
+		const char *s2 = "Hello5";
+		printf("\n  TEST 3\n  <String 1: \"%s\"\n  <String 2: \"%s\"\n", s1, s2);
+
+		int result1 = strcmp(s1, s2);
+		printf("  >Output with strcmp: %d\n", result1);
+
+		int result2 = ft_strcmp(s1, s2);
+		printf("  >Output with ft_strcmp: %d\n", result2);
+
+		if (result1 == result2)
+			printf("  RESULT: ✅ PASS\n");
+		else
+			printf("  RESULT: ❌ FAIL\n");
+	}
 
 
     return (0);
