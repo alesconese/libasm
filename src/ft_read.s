@@ -1,7 +1,7 @@
-global ft_write
+global ft_read
 
 ; =======================================
-; ssize_t	ft_write(int fd, const void *buf, size_t count);
+; ssize_t	ft_read(int fd, const void *buf, size_t count);
 ;
 ; fd		->	rdi
 ; *buf		->	rsi
@@ -13,8 +13,8 @@ extern __errno_location
 
 section .text
 
-ft_write:
-	mov		rax, 1					; Load the syscall number for write (1) into rax
+ft_read:
+	mov		rax, 0					; Load the syscall number for read (0) into rax
 	syscall							; Execute the syscall. Arguments are passed in the same registers we received them (rdi, rsi, rdx)
 	test	rax, rax				; Perform bitwise AND on the return value to set Sign Flag. SF = 1 if negative (error)
 	js		.error					; Jump to error handling if SF = 1 (error returned). Error code stored in rax
