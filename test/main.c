@@ -7,7 +7,7 @@
 int main(void)
 {
 	/********** Test of ft_strlen **********/
-	printf("***** TESTING FUNCTION: ft_strlen** ***\n");
+	printf("***** TESTING FUNCTION: ft_strlen*****\n");
 	{
 		printf("\n* TEST 1 - Non-empty string\n");
 
@@ -44,7 +44,7 @@ int main(void)
 	}
 
 	/********** Test of ft_strcpy **********/
-	printf("\n***** TESTING FUNCTION: ft_strcpy** ***\n");
+	printf("\n***** TESTING FUNCTION: ft_strcpy*****\n");
 	{
 		printf("\n* TEST 1 - Non-empty string\n");
 
@@ -85,7 +85,7 @@ int main(void)
 	}
 	
 	/********** Test of ft_strcmp **********/
-	printf("\n***** TESTING FUNCTION: ft_strcmp** ***\n");
+	printf("\n***** TESTING FUNCTION: ft_strcmp*****\n");
 	{
 		printf("\n* TEST 1 - Identical strings\n");
 
@@ -204,6 +204,7 @@ int main(void)
 	}
 
 	/********** Test of ft_read **********/
+	// !!! Read from file not stdin !!! //
 	printf("\n***** TESTING FUNCTION: ft_read *****\n");
 	{
 		printf("\n* TEST 1 - Read from stdin\n");
