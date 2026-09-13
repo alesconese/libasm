@@ -88,5 +88,9 @@ test: $(LIB_PATH)
 	@echo "-----------------------------------"
 	@./$(TEST_EXEC)
 
+malloc_error:
+	@$(CC) $(CFLAGS) -DMALLOC_ERROR -Wl,--wrap=malloc $(TEST_SRC) -L$(LIB_DIR) -lasm -o $(TEST_EXEC)
+	@./$(TEST_EXEC)
+
 # Phony targets prevent conflicts with files named 'all', 'clean', etc.
 .PHONY: all clean fclean re test

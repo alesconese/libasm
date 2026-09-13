@@ -5,6 +5,21 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <sys/resource.h>
+
+static int force_malloc_error = 0;
+
+#ifdef MALLOC_ERROR
+	extern void	*__real_malloc(size_t size);
+
+	void *__wrap_malloc(size_t size) {
+		if (force_malloc_error) {
+			errno = ENOMEM; // Set errno to indicate memory allocation failure
+			return NULL;    // Simulate malloc failure
+		}
+		return __real_malloc(size); // Call the real malloc function
+	}
+#endif
 
 int main(void)
 {
@@ -374,7 +389,26 @@ int main(void)
 		free(result1);
 		free(result2);
 	}
+	{
+		printf("\n* TEST 3 - Force malloc error\n");
+	
+		force_malloc_error = 1;
 
+		const char *test_str = "This should fail";
+		printf("  <Input: \"%s\" (address: %p)\n", test_str, (void*)test_str);
+
+		errno = 0;
+		char *result = ft_strdup(test_str);
+		int err = errno;
+		printf("  >Output with ft_strdup: \"%s\" (address: %p)\n", result, (void*)result);
+		printf("  >Error with ft_strdup: %s [errno: %d]\n", strerror(err), err);
+		force_malloc_error = 0;
+
+		if (result == NULL && err == ENOMEM)
+			printf("* RESULT: ✅ PASS\n");
+		else
+			printf("* RESULT: ❌ FAIL\n");
+	}
 
     return (0);
 }
